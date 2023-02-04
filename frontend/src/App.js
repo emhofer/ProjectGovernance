@@ -8,6 +8,39 @@ const projects = [
     number: 101,
     name: "KPIs for Finance Department",
     owner: "Finance Manager",
+    start: new Date().toLocaleDateString(),
+    reason: "Default project reason.",
+    description: "Default project description.",
+    goals: "Default project goals.",
+    members: [
+      {
+        name: "Peter Emhofer",
+        role: "Lead",
+      },
+    ],
+    milestones: [
+      {
+        name: "Research KPIs",
+        deadline: new Date().toLocaleDateString(),
+      },
+    ],
+    investments: [
+      {
+        name: "Employee Resources",
+      },
+    ],
+    updates: [
+      {
+        date: new Date().toLocaleDateString(),
+        update: "Default project update.",
+        nextsteps: "Default project next steps.",
+      },
+      {
+        date: new Date().toLocaleDateString(),
+        update: "Default project update.",
+        nextsteps: "Default project next steps.",
+      },
+    ],
     status: "On Track",
     delayReason: "-",
   },

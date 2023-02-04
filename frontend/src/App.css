@@ -51,3 +51,11 @@ table a {
 .charter th {
   width: 30%;
 }
+
+.multiLine {
+  white-space: pre-wrap;
+}
+
+.cell {
+  width: 100%;
+}
