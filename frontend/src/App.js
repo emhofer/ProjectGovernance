@@ -28,8 +28,6 @@ function App() {
         <table>
           <thead>
             <tr>
-              <th>Department</th>
-              <th>Number</th>
               <th>Name</th>
               <th>Owner</th>
               <th>Status</th>
@@ -39,9 +37,7 @@ function App() {
           <tbody>
             {projects.map((item) => {
               return (
-                <tr key={item.info.number}>
-                  <td>{item.info.department}</td>
-                  <td>{item.info.number}</td>
+                <tr key={item.info.id}>
                   <td>
                     <Link to="/project" state={item.info}>
                       {item.info.name}

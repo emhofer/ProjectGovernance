@@ -28,11 +28,10 @@ const getProjectById = (request, response) => {
 };
 
 const createProject = (request, response) => {
-  const { name, email } = request.body;
-
+  const { project } = request.body;
   pool.query(
-    "INSERT INTO project (name, email) VALUES ($1, $2)",
-    [name, email],
+    "INSERT INTO project (info) VALUES ($1)",
+    [project],
     (error, results) => {
       if (error) {
         throw error;

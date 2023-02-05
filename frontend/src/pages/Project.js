@@ -26,20 +26,32 @@ function Project() {
       <form action="">
         <div className="charter">
           <div className="block1">
-            <p className="heading">Name</p>
-            <p className="heading">Owner</p>
-            <p className="heading">Start</p>
-            <p className="info">{project.name}</p>
-            <p className="info">{project.owner}</p>
-            <p className="info">{project.start.substring(0, 10)}</p>
+            <div>
+              <p className="heading">Name</p>
+              <p className="info">{project.name}</p>
+            </div>
+            <div>
+              <p className="heading">Owner</p>
+              <p className="info">{project.owner}</p>
+            </div>
+            <div>
+              <p className="heading">Start</p>
+              <p className="info">{project.start.substring(0, 10)}</p>
+            </div>
           </div>
           <div className="block1">
-            <p className="heading">Reason</p>
-            <p className="heading">Description</p>
-            <p className="heading">Goals</p>
-            <p className="multiLine info">{project.reason}</p>
-            <p className="multiLine info">{project.description}</p>
-            <p className="multiLine info">{project.goals}</p>
+            <div>
+              <p className="heading">Reason</p>
+              <p className="multiLine info">{project.reason}</p>
+            </div>
+            <div>
+              <p className="heading">Description</p>
+              <p className="multiLine info">{project.description}</p>
+            </div>
+            <div>
+              <p className="heading">Goals</p>
+              <p className="multiLine info">{project.goals}</p>
+            </div>
           </div>
           {/* <div className="block2">
           <label>Team</label>
@@ -58,10 +70,8 @@ function Project() {
               id="status"
               className="cell"
               onChange={formatSelect}
+              defaultValue={project.status}
             >
-              <option value={project.status} hidden selected>
-                {project.status}
-              </option>
               <option value="On Track">On Track</option>
               <option value="Delayed">Delayed</option>
               <option value="On Hold">On Hold</option>
@@ -100,17 +110,18 @@ function Project() {
               placeholder="What are the next steps to take?"
               className="info-update"
             ></textarea>{" "}
-            {project.updates.sort(compare).map((item) => {
-              return (
-                <>
-                  <p className="info info-update">
-                    {item.date.substring(0, 10)}
-                  </p>
-                  <p className="info info-update">{item.update}</p>
-                  <p className="info info-update">{item.nextsteps}</p>
-                </>
-              );
-            })}
+            {project.updates &&
+              project.updates.sort(compare).map((item) => {
+                return (
+                  <>
+                    <p className="info info-update">
+                      {item.date.substring(0, 10)}
+                    </p>
+                    <p className="info info-update">{item.update}</p>
+                    <p className="info info-update">{item.nextsteps}</p>
+                  </>
+                );
+              })}
           </div>
           <button type="submit">Save</button>
         </div>

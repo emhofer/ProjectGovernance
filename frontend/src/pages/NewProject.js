@@ -1,6 +1,18 @@
 import { React, useEffect } from "react";
 import { Link } from "react-router-dom";
 import formatSelect from "../functions/formatSelect";
+import axios from "axios";
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const formProps = Object.fromEntries(formData);
+  const payload = { project: JSON.parse(JSON.stringify(formProps)) };
+  console.log(payload);
+  const test = {};
+  const response = await axios.post(`http://localhost:3001/projects`, payload);
+  console.log(response);
+};
 
 function NewProject() {
   useEffect(() => {
@@ -10,7 +22,7 @@ function NewProject() {
     <div className="page">
       <Link to="/">Back to overview</Link>
       <h1>Add project</h1>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="charter">
           <div className="block1">
             <label htmlFor="name">Name</label>
@@ -86,14 +98,19 @@ function NewProject() {
             <label htmlFor="status">Status</label>
             <label htmlFor="delayreason">Delay Reason</label>
             <br />
-            <select name="status" id="status" className="cell">
+            <select
+              name="status"
+              id="status"
+              className="cell"
+              onChange={formatSelect}
+            >
               <option value="On Track">On Track</option>
               <option value="Delayed">Delayed</option>
               <option value="On Hold">On Hold</option>
               <option value="Closed">Closed</option>
             </select>
             <select name="delayreason" id="delayreason" className="cell">
-              <option value="none">-</option>
+              <option value="-">-</option>
               <option value="IT Resources">IT Resources</option>
               <option value="FI Resources">FI Resources</option>
               <option value="Other">Other</option>

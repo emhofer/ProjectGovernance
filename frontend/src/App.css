@@ -55,6 +55,8 @@ table a {
   color: #eaeaea;
   border-radius: 5px;
   padding: 5px;
+  overflow: scroll;
+  margin-bottom: 10px;
 }
 
 .charter button {
@@ -83,6 +85,7 @@ table a {
 
 .multiLine {
   white-space: pre-wrap;
+  height: 20vh;
 }
 
 .ontrack {
@@ -99,4 +102,13 @@ table a {
 
 .closed {
   color: #5998C5;
+}
+
+@media screen and (max-width: 600px) {
+
+  .block1,
+  .block2,
+  .block3 {
+    grid-template-columns: 1fr;
+  }
 }
