@@ -1,81 +1,29 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const projects = [
-  {
-    department: "Finance",
-    number: 101,
-    name: "KPIs for Finance Department",
-    owner: "Finance Manager",
-    start: new Date().toLocaleDateString(),
-    reason: "Default project reason.",
-    description: "Default project description.",
-    goals: "Default project goals.",
-    members: [
-      {
-        name: "Peter Emhofer",
-        role: "Lead",
-      },
-    ],
-    milestones: [
-      {
-        name: "Research KPIs",
-        deadline: new Date().toLocaleDateString(),
-      },
-    ],
-    investments: [
-      {
-        name: "Employee Resources",
-      },
-    ],
-    updates: [
-      {
-        date: new Date().toLocaleDateString(),
-        update: "Default project update.",
-        nextsteps: "Default project next steps.",
-      },
-      {
-        date: new Date().toLocaleDateString(),
-        update: "Default project update.",
-        nextsteps: "Default project next steps.",
-      },
-    ],
-    status: "On Track",
-    delayReason: "-",
-  },
-  {
-    department: "Finance",
-    number: 102,
-    name: "Datawarehouse for Financial Data",
-    owner: "Finance Manager",
-    status: "Delayed",
-    delayReason: "IT Resources",
-  },
-  ,
-  {
-    department: "Finance",
-    number: 103,
-    name: "R&D Planning Tool",
-    owner: "Finance Manager",
-    status: "On Hold",
-    delayReason: "FI Resources",
-  },
-  ,
-  {
-    department: "Finance",
-    number: 104,
-    name: "CAPEX Reporting",
-    owner: "Finance Manager",
-    status: "Closed",
-    delayReason: "-",
-  },
-];
+const getProjects = async () => {
+  const response = await fetch("http://localhost:3001/projects");
+  const json = response.json();
+  return json;
+};
 
 function App() {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      let response = await getProjects();
+      setProjects(response);
+    }
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">Project Governance</header>
+    <div className="App page">
+      <header>
+        <h1>Project Governance</h1>
+      </header>
       <main>
         <table>
           <thead>
@@ -91,30 +39,32 @@ function App() {
           <tbody>
             {projects.map((item) => {
               return (
-                <tr key={item.number}>
-                  <td>{item.department}</td>
-                  <td>{item.number}</td>
+                <tr key={item.info.number}>
+                  <td>{item.info.department}</td>
+                  <td>{item.info.number}</td>
                   <td>
-                    <Link to="/project" state={item}>
-                      {item.name}
+                    <Link to="/project" state={item.info}>
+                      {item.info.name}
                     </Link>
                   </td>
-                  <td>{item.owner}</td>
+                  <td>{item.info.owner}</td>
                   <td
-                    className={item.status
+                    className={item.info.status
                       .toString()
                       .replace(" ", "")
                       .toLowerCase()}
                   >
-                    {item.status}
+                    {item.info.status}
                   </td>
-                  <td>{item.delayReason}</td>
+                  <td>{item.info.delayreason}</td>
                 </tr>
               );
             })}
             <tr>
               <td id="newProject" colSpan={6}>
-                <Link to="/project">+</Link>
+                <Link to="/project/new">
+                  <div className="cell">+</div>
+                </Link>
               </td>
             </tr>
           </tbody>
