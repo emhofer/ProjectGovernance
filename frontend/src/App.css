@@ -112,3 +112,11 @@ table a {
     grid-template-columns: 1fr;
   }
 }
+
+.updates {
+  width: 100%;
+}
+
+.updates-input {
+  width: 100%;
+}
