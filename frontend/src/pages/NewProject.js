@@ -1,5 +1,5 @@
 import { React, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import formatSelect from "../functions/formatSelect";
 import axios from "axios";
 
@@ -12,12 +12,14 @@ const handleSubmit = async (e) => {
   const test = {};
   const response = await axios.post(`http://localhost:3001/projects`, payload);
   console.log(response);
+  window.location.href = "/";
 };
 
 function NewProject() {
   useEffect(() => {
     formatSelect();
   }, []);
+
   return (
     <div className="page">
       <Link to="/">Back to overview</Link>
