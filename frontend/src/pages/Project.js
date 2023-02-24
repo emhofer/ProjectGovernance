@@ -1,10 +1,15 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import formatSelect from "../functions/formatSelect";
+import { useSelector, useDispatch } from "react-redux";
+import { save } from "../store/projectSlice";
 
 function Project() {
   const location = useLocation();
   const project = location.state;
+
+  const pj = useSelector((state) => state.project.value);
+
   useEffect(() => {
     formatSelect();
   }, []);
@@ -23,6 +28,7 @@ function Project() {
     <div className="page">
       <Link to="/">Back to overview</Link>
       <h1>Project details</h1>
+      <p>{pj.name}</p>
       <form action="">
         <div className="charter">
           <div className="block1">
