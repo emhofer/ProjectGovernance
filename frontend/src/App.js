@@ -1,5 +1,5 @@
 import "./App.css";
-import { Link, useAsyncValue } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { save } from "./store/projectSlice";
 import { useDispatch } from "react-redux";
@@ -40,10 +40,10 @@ function App() {
           <tbody>
             {projects.map((item) => {
               return (
-                <tr key={item.info.id}>
+                <tr key={item.id}>
                   <td>
                     <Link
-                      to="/project"
+                      to={"/project/"+item.id}
                       state={item.info}
                       onClick={() => dispatch(save({ name: "test", age:"23" }))}
                     >

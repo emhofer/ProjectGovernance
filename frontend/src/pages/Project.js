@@ -1,17 +1,32 @@
 import { React, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import formatSelect from "../functions/formatSelect";
 import { useSelector, useDispatch } from "react-redux";
 import { save } from "../store/projectSlice";
 
-function Project() {
-  const location = useLocation();
-  const project = location.state;
+const getProjectData = async (id) => {
+  const response = await fetch(`http://localhost:3001/projects/${id}`);
+  const json = response.json();
+  return json;
+};
 
-  const pj = useSelector((state) => state.project.value);
+function Project() {
+  // const location = useLocation();
+  // const projectBefore = location.state;
+  const [project, setProject] = useState();
+  // const pj = useSelector((state) => state.project.value);
+  const { id } = useParams();
 
   useEffect(() => {
     formatSelect();
+  }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      let response = await getProjectData(id);
+      setProject(response[0].info);
+    }
+    fetchData();
   }, []);
 
   const compare = (a, b) => {
@@ -24,12 +39,19 @@ function Project() {
     return 0;
   };
 
+  const handleSubmit = () => {
+    // window.history.replaceState(project);
+  };
+
+  if (!project) {
+    return <></>
+  }
+
   return (
     <div className="page">
       <Link to="/">Back to overview</Link>
       <h1>Project details</h1>
-      <p>{pj.name}</p>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="charter">
           <div className="block1">
             <p className="heading">Name</p>
@@ -106,17 +128,19 @@ function Project() {
               placeholder="What are the next steps to take?"
               className="info-update"
             ></textarea>{" "}
-            {project.updates.sort(compare).map((item) => {
-              return (
-                <>
-                  <p className="info info-update">
-                    {item.date.substring(0, 10)}
-                  </p>
-                  <p className="info info-update">{item.update}</p>
-                  <p className="info info-update">{item.nextsteps}</p>
-                </>
-              );
-            })}
+            {!project.updates
+              ? ""
+              : project.updates.sort(compare).map((item) => {
+                  return (
+                    <>
+                      <p className="info info-update">
+                        {item.date.substring(0, 10)}
+                      </p>
+                      <p className="info info-update">{item.update}</p>
+                      <p className="info info-update">{item.nextsteps}</p>
+                    </>
+                  );
+                })}
           </div>
           <button type="submit">Save</button>
         </div>

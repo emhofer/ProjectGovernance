@@ -1,5 +1,8 @@
 const formatSelect = () => {
   const select = document.querySelector("#status");
+  if (select === null) {
+    return 1;
+  }
   switch (select.value) {
     case "On Track":
       select.style.color = "#76B041";
