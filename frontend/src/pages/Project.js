@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import formatSelect from "../functions/formatSelect";
 import { useSelector, useDispatch } from "react-redux";
 import { save } from "../store/projectSlice";
+import axios from "axios";
 
 const getProjectData = async (id) => {
   const response = await fetch(`http://localhost:3001/projects/${id}`);
@@ -39,12 +40,51 @@ function Project() {
     return 0;
   };
 
-  const handleSubmit = () => {
-    // window.history.replaceState(project);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const formProps = Object.fromEntries(formData);
+    const formObject = { project: JSON.parse(JSON.stringify(formProps)) };
+    let payload = {};
+    if (formObject.project["update-update"]) {
+      payload = {
+        id,
+        project: {
+          ...project,
+          status: formObject.project.status,
+          delayreason: formObject.project.delayreason,
+          updates: [
+            ...project.updates,
+            {
+              date: new Date(formObject.project["update-date"]).toISOString(),
+              update: formObject.project["update-update"],
+              nextsteps: formObject.project["update-nextsteps"],
+            },
+          ],
+        },
+      };
+    } else {
+      payload = {
+        id,
+        project: {
+          ...project,
+          status: formObject.project.status,
+          delayreason: formObject.project.delayreason,
+        },
+      };
+    }
+    console.log(payload);
+    const test = {};
+    const response = await axios.put(
+      `http://localhost:3001/projects/${id}`,
+      payload
+    );
+    console.log(response);
+    window.location.reload();
   };
 
   if (!project) {
-    return <></>
+    return <></>;
   }
 
   return (

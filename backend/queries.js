@@ -42,12 +42,11 @@ const createProject = (request, response) => {
 };
 
 const updateProject = (request, response) => {
-  const id = parseInt(request.params.id);
-  const { name, email } = request.body;
+  const { id, project } = request.body;
 
   pool.query(
-    "UPDATE project SET name = $1, email = $2 WHERE id = $3",
-    [name, email, id],
+    "UPDATE project SET info = $1 WHERE id = $2",
+    [project, id],
     (error, results) => {
       if (error) {
         throw error;
