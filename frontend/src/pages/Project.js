@@ -20,7 +20,6 @@ function Project() {
 
   useEffect(() => {
     formatSelect();
-    console.log("formatted");
   }, [project]);
 
   useEffect(() => {
@@ -48,22 +47,40 @@ function Project() {
     const formObject = { project: JSON.parse(JSON.stringify(formProps)) };
     let payload = {};
     if (formObject.project["update-update"]) {
-      payload = {
-        id,
-        project: {
-          ...project,
-          status: formObject.project.status,
-          delayreason: formObject.project.delayreason,
-          updates: [
-            ...project.updates,
-            {
-              date: new Date(formObject.project["update-date"]).toISOString(),
-              update: formObject.project["update-update"],
-              nextsteps: formObject.project["update-nextsteps"],
-            },
-          ],
-        },
-      };
+      if (project.updates) {
+        payload = {
+          id,
+          project: {
+            ...project,
+            status: formObject.project.status,
+            delayreason: formObject.project.delayreason,
+            updates: [
+              ...project.updates,
+              {
+                date: new Date(formObject.project["update-date"]).toISOString(),
+                update: formObject.project["update-update"],
+                nextsteps: formObject.project["update-nextsteps"],
+              },
+            ],
+          },
+        };
+      } else {
+        payload = {
+          id,
+          project: {
+            ...project,
+            status: formObject.project.status,
+            delayreason: formObject.project.delayreason,
+            updates: [
+              {
+                date: new Date(formObject.project["update-date"]).toISOString(),
+                update: formObject.project["update-update"],
+                nextsteps: formObject.project["update-nextsteps"],
+              },
+            ],
+          },
+        };
+      }
     } else {
       payload = {
         id,
@@ -81,7 +98,8 @@ function Project() {
       payload
     );
     console.log(response);
-    window.location.reload();
+    let update = await getProjectData(id);
+    setProject(update[0].info);
   };
 
   if (!project) {

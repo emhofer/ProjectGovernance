@@ -3,7 +3,6 @@ const formatSelect = () => {
   if (select === null) {
     return 1;
   }
-  console.log(select, select.value);
   switch (select.value) {
     case "On Track":
       select.style.color = "#76B041";
