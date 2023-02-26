@@ -20,7 +20,8 @@ function Project() {
 
   useEffect(() => {
     formatSelect();
-  }, []);
+    console.log("formatted");
+  }, [project]);
 
   useEffect(() => {
     async function fetchData() {
@@ -126,16 +127,22 @@ function Project() {
               id="status"
               className="cell"
               onChange={formatSelect}
+              defaultValue={project.status}
             >
-              <option value={project.status} hidden selected>
+              {/* <option value={project.status} hidden selected>
                 {project.status}
-              </option>
+              </option> */}
               <option value="On Track">On Track</option>
               <option value="Delayed">Delayed</option>
               <option value="On Hold">On Hold</option>
               <option value="Closed">Closed</option>
             </select>
-            <select name="delayreason" id="delayreason" className="cell">
+            <select
+              name="delayreason"
+              id="delayreason"
+              className="cell"
+              defaultValue={project.delayreason}
+            >
               <option value="-">-</option>
               <option value="IT Resources">IT Resources</option>
               <option value="FI Resources">FI Resources</option>
