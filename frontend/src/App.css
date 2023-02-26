@@ -1,6 +1,6 @@
 table {
   border-spacing: 0;
-  width: 70%;
+  width: 80%;
 }
 
 th {
@@ -126,4 +126,22 @@ textarea::-webkit-scrollbar,
 button::-webkit-scrollbar,
 input::-webkit-scrollbar {
   display: none
+}
+
+.deleteProject {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #eaeaea;
+}
+
+.deleteProject:hover {
+  background-color: #eaeaea;
+  color: #1d1d27;
+}
+
+.deleteProject:active {
+  background-color: #5f5f7b;
+  color: #1d1d27;
 }

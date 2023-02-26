@@ -25,7 +25,7 @@ app.get("/projects", db.getProjects);
 app.get("/projects/:id", db.getProjectById);
 app.post("/projects", db.createProject);
 app.put("/projects/:id", db.updateProject);
-// app.delete("/projects/:id", db.deleteProject);
+app.delete("/projects/:id", db.deleteProject);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);

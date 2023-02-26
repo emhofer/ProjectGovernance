@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { save } from "./store/projectSlice";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 const getProjects = async () => {
   const response = await fetch("http://localhost:3001/projects");
@@ -22,6 +23,13 @@ function App() {
     fetchData();
   }, []);
 
+  const handleDelete = async (id) => {
+    const response = await axios.delete(`http://localhost:3001/projects/${id}`);
+    console.log(response);
+    let update = await getProjects();
+    setProjects(update);
+  };
+
   return (
     <div className="App page">
       <header>
@@ -35,6 +43,7 @@ function App() {
               <th>Owner</th>
               <th>Status</th>
               <th>Delay Reason</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -43,9 +52,11 @@ function App() {
                 <tr key={item.id}>
                   <td>
                     <Link
-                      to={"/project/"+item.id}
+                      to={"/project/" + item.id}
                       state={item.info}
-                      onClick={() => dispatch(save({ name: "test", age:"23" }))}
+                      onClick={() =>
+                        dispatch(save({ name: "test", age: "23" }))
+                      }
                     >
                       {item.info.name}
                     </Link>
@@ -60,6 +71,14 @@ function App() {
                     {item.info.status}
                   </td>
                   <td>{item.info.delayreason}</td>
+                  <td>
+                    <button
+                      className="deleteProject"
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               );
             })}
