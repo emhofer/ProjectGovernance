@@ -1,8 +1,6 @@
 import { React, useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import formatSelect from "../functions/formatSelect";
-import { useSelector, useDispatch } from "react-redux";
-import { save } from "../store/projectSlice";
 import axios from "axios";
 
 const getProjectData = async (id) => {
@@ -12,10 +10,7 @@ const getProjectData = async (id) => {
 };
 
 function Project() {
-  // const location = useLocation();
-  // const projectBefore = location.state;
   const [project, setProject] = useState();
-  // const pj = useSelector((state) => state.project.value);
   const { id } = useParams();
 
   useEffect(() => {
@@ -91,13 +86,10 @@ function Project() {
         },
       };
     }
-    console.log(payload);
-    const test = {};
     const response = await axios.put(
       `http://localhost:3001/projects/${id}`,
       payload
     );
-    console.log(response);
     let update = await getProjectData(id);
     setProject(update[0].info);
   };
@@ -128,14 +120,6 @@ function Project() {
             <p className="multiLine info">{project.description}</p>
             <p className="multiLine info">{project.goals}</p>
           </div>
-          {/* <div className="block2">
-          <label>Team</label>
-          <label>Role</label>
-          <label>Milestones</label>
-          <label>Deadline</label>
-          <label>Investments</label>
-          <label>Amount</label>
-        </div> */}
           <div className="block1">
             <label htmlFor="status">Status</label>
             <label htmlFor="delayreason">Delay Reason</label>
@@ -147,9 +131,6 @@ function Project() {
               onChange={formatSelect}
               defaultValue={project.status}
             >
-              {/* <option value={project.status} hidden selected>
-                {project.status}
-              </option> */}
               <option value="On Track">On Track</option>
               <option value="Delayed">Delayed</option>
               <option value="On Hold">On Hold</option>

@@ -1,8 +1,6 @@
 import "./App.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { save } from "./store/projectSlice";
-import { useDispatch } from "react-redux";
 import axios from "axios";
 
 const getProjects = async () => {
@@ -13,7 +11,6 @@ const getProjects = async () => {
 
 function App() {
   const [projects, setProjects] = useState([]);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
@@ -51,13 +48,7 @@ function App() {
               return (
                 <tr key={item.id}>
                   <td>
-                    <Link
-                      to={"/project/" + item.id}
-                      state={item.info}
-                      onClick={() =>
-                        dispatch(save({ name: "test", age: "23" }))
-                      }
-                    >
+                    <Link to={"/project/" + item.id}>
                       {item.info.name}
                     </Link>
                   </td>

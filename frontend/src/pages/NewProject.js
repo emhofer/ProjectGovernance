@@ -1,5 +1,5 @@
 import { React, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import formatSelect from "../functions/formatSelect";
 import axios from "axios";
 
@@ -8,10 +8,7 @@ const handleSubmit = async (e) => {
   const formData = new FormData(e.target);
   const formProps = Object.fromEntries(formData);
   const payload = { project: JSON.parse(JSON.stringify(formProps)) };
-  console.log(payload);
-  const test = {};
   const response = await axios.post(`http://localhost:3001/projects`, payload);
-  console.log(response);
   window.location.href = "/";
 };
 
@@ -72,30 +69,6 @@ function NewProject() {
               placeholder="What should this project accomplish?"
             ></textarea>
           </div>
-          {/* <div className="block2">
-          <label>Team</label>
-          <label>Role</label>
-          <label>Milestones</label>
-          <label>Deadline</label>
-          <label>Investments</label>
-          <label>Amount</label>
-          <input type="text" name="team" id="team" placeholder="Member" />{" "}
-          <input type="text" name="role" id="role" placeholder="Role" />{" "}
-          <input
-            type="text"
-            name="milestone"
-            id="milestone"
-            placeholder="Milestone"
-          />
-          <input type="date" name="deadline" id="deadline" />
-          <input
-            type="text"
-            name="investment"
-            id="investment"
-            placeholder="Investment"
-          />{" "}
-          <input type="number" name="amount" id="amount" />
-        </div> */}
           <div className="block1">
             <label htmlFor="status">Status</label>
             <label htmlFor="delayreason">Delay Reason</label>
