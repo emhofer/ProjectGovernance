@@ -33,7 +33,7 @@ function App() {
         <h1>Project Governance</h1>
       </header>
       <main>
-        <table>
+        {/* <table>
           <thead>
             <tr>
               <th>Name</th>
@@ -48,9 +48,7 @@ function App() {
               return (
                 <tr key={item.id}>
                   <td>
-                    <Link to={"/project/" + item.id}>
-                      {item.info.name}
-                    </Link>
+                    <Link to={"/project/" + item.id}>{item.info.name}</Link>
                   </td>
                   <td>{item.info.owner}</td>
                   <td
@@ -81,7 +79,27 @@ function App() {
               </td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
+        <div className="container">
+          {projects.map((item) => {
+            return (
+              <Link to={"/project/" + item.id}>
+                <div className="card" key={item.id}>
+                  <p>{item.info.name}</p>
+                  <p>{item.info.owner}</p>
+                  <p>{item.info.status}</p>
+                  <p>{item.info.delayreason}</p>
+                  <button
+                    className="deleteProject"
+                    onClick={() => handleDelete(item.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </main>
     </div>
   );

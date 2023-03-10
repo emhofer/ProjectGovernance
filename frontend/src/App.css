@@ -160,3 +160,12 @@ button::-webkit-scrollbar,
 input::-webkit-scrollbar {
   display: none
 }*/
+
+.card {
+  background-color: #1d1d27;
+  border-radius: 5px;
+}
+
+.container a {
+  text-decoration: none;
+}
