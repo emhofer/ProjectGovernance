@@ -106,28 +106,28 @@ function Project() {
         <div className="charter">
           <div className="block1">
             <p className="heading">Name</p>
-            <p className="heading">Owner</p>
-            <p className="heading">Start</p>
             <p className="info">{project.name}</p>
+            <p className="heading">Owner</p>
             <p className="info">{project.owner}</p>
+            <p className="heading">Start</p>
             <p className="info">{project.start.substring(0, 10)}</p>
           </div>
           <div className="block1">
             <p className="heading">Reason</p>
-            <p className="heading">Description</p>
-            <p className="heading">Goals</p>
             <p className="multiLine info">{project.reason}</p>
+            <p className="heading">Description</p>
             <p className="multiLine info">{project.description}</p>
+            <p className="heading">Goals</p>
             <p className="multiLine info">{project.goals}</p>
           </div>
           <div className="block1">
-            <label htmlFor="status">Status</label>
-            <label htmlFor="delayreason">Delay Reason</label>
-            <br />
+              <label className="heading" htmlFor="status">
+                Status
+              </label>
             <select
               name="status"
               id="status"
-              className="cell"
+              className="info"
               onChange={formatSelect}
               defaultValue={project.status}
             >
@@ -136,10 +136,13 @@ function Project() {
               <option value="On Hold">On Hold</option>
               <option value="Closed">Closed</option>
             </select>
+              <label className="heading" htmlFor="delayreason">
+                Delay Reason
+              </label>
             <select
               name="delayreason"
               id="delayreason"
-              className="cell"
+              className="info"
               defaultValue={project.delayreason}
             >
               <option value="-">-</option>

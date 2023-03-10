@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className="App page">
+    <div className="page">
       <header>
         <h1>Project Governance</h1>
       </header>

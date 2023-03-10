@@ -1,16 +1,33 @@
-/* table {
+.page {
+  margin: 1rem;
+}
+
+.ontrack {
+  color: #76B041;
+}
+
+.delayed {
+  color: #FFBA49;
+}
+
+.onhold {
+  color: #E01A4F;
+}
+
+.closed {
+  color: #5998C5;
+}
+
+table {
   border-spacing: 0;
-  width: 80%;
+  width: 100%;
+  overflow-x: auto;
 }
 
-th {
-  text-align: left;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-}
-
+th,
 td {
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   text-align: left;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 
 tbody tr:nth-child(odd) {
@@ -26,9 +43,41 @@ table a {
   text-decoration: none;
 }
 
-.page {
-  margin: 1rem;
+.deleteProject {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #eaeaea;
 }
+
+.deleteProject:hover {
+  background-color: #eaeaea;
+  color: #1d1d27;
+}
+
+.deleteProject:active {
+  background-color: #5f5f7b;
+  color: #1d1d27;
+}
+
+.heading {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.info {
+  border: none;
+  background-color: #1d1d27;
+  color: #eaeaea;
+  border-radius: 5px;
+  padding: 5px;
+  overflow: scroll;
+  margin-bottom: 10px;
+}
+
+/* 
 
 .charter {
   margin-right: 1rem;
@@ -88,22 +137,6 @@ table a {
   height: 20vh;
 }
 
-.ontrack {
-  color: #76B041;
-}
-
-.delayed {
-  color: #FFBA49;
-}
-
-.onhold {
-  color: #E01A4F;
-}
-
-.closed {
-  color: #5998C5;
-}
-
 @media screen and (max-width: 600px) {
 
   .block1,
@@ -126,22 +159,4 @@ textarea::-webkit-scrollbar,
 button::-webkit-scrollbar,
 input::-webkit-scrollbar {
   display: none
-}
-
-.deleteProject {
-  background-color: transparent;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  color: #eaeaea;
-}
-
-.deleteProject:hover {
-  background-color: #eaeaea;
-  color: #1d1d27;
-}
-
-.deleteProject:active {
-  background-color: #5f5f7b;
-  color: #1d1d27;
-} */
+}*/
