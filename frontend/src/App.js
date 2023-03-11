@@ -85,16 +85,26 @@ function App() {
             return (
               <Link to={"/project/" + item.id}>
                 <div className="card" key={item.id}>
-                  <p>{item.info.name}</p>
+                  <p className="cardHeading">
+                    <strong>{item.info.name}</strong>
+                  </p>
                   <p>{item.info.owner}</p>
-                  <p>{item.info.status}</p>
-                  <p>{item.info.delayreason}</p>
-                  <button
-                    className="deleteProject"
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    Delete
-                  </button>
+                  <p>
+                    <span
+                      className={item.info.status
+                        .toString()
+                        .replace(" ", "")
+                        .toLowerCase()}
+                    >
+                      {item.info.status}
+                    </span>{" "}
+                    {item.info.status
+                      .toString()
+                      .replace(" ", "")
+                      .toLowerCase() === "ontrack"
+                      ? ""
+                      : "- " + item.info.delayreason}
+                  </p>
                 </div>
               </Link>
             );

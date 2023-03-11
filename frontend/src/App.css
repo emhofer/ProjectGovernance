@@ -77,6 +77,17 @@ table a {
   margin-bottom: 10px;
 }
 
+input,
+textarea, button {
+  border: none;
+  background-color: #1d1d27;
+  color: #eaeaea;
+  border-radius: 5px;
+  padding: 5px;
+  overflow: scroll;
+  margin-bottom: 10px;
+}
+
 /* 
 
 .charter {
@@ -161,11 +172,17 @@ input::-webkit-scrollbar {
   display: none
 }*/
 
-.card {
-  background-color: #1d1d27;
-  border-radius: 5px;
+.container {
+  display: grid;
+  gap: 1rem;
 }
 
 .container a {
   text-decoration: none;
+}
+
+.card {
+  background-color: #1d1d27;
+  border-radius: 5px;
+  padding: 3px 10px;
 }

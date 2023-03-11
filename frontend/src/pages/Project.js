@@ -121,9 +121,9 @@ function Project() {
             <p className="multiLine info">{project.goals}</p>
           </div>
           <div className="block1">
-              <label className="heading" htmlFor="status">
-                Status
-              </label>
+            <label className="heading" htmlFor="status">
+              Status
+            </label>
             <select
               name="status"
               id="status"
@@ -136,9 +136,9 @@ function Project() {
               <option value="On Hold">On Hold</option>
               <option value="Closed">Closed</option>
             </select>
-              <label className="heading" htmlFor="delayreason">
-                Delay Reason
-              </label>
+            <label className="heading" htmlFor="delayreason">
+              Delay Reason
+            </label>
             <select
               name="delayreason"
               id="delayreason"
@@ -152,15 +152,18 @@ function Project() {
             </select>
           </div>
           <div className="block1">
-            <label htmlFor="update-date">Date</label>{" "}
-            <label htmlFor="update-update">Update</label>{" "}
-            <label htmlFor="update-nextsteps">Next Steps</label>
+            <label className="heading" htmlFor="update-date">
+              Date
+            </label>{" "}
             <input
               type="date"
               name="update-date"
               id="update-date"
               className="info-update"
             />
+            <label className="heading" htmlFor="update-update">
+              Update
+            </label>{" "}
             <textarea
               name="update-update"
               id="update-update"
@@ -169,6 +172,9 @@ function Project() {
               placeholder="What is the most recent status update?"
               className="info-update"
             ></textarea>{" "}
+            <label className="heading" htmlFor="update-nextsteps">
+              Next Steps
+            </label>
             <textarea
               name="update-nextsteps"
               id="update-nextsteps"
