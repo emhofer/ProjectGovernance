@@ -183,21 +183,27 @@ function Project() {
               placeholder="What are the next steps to take?"
               className="info-update"
             ></textarea>{" "}
-            {!project.updates
-              ? ""
-              : project.updates.sort(compare).map((item) => {
-                  return (
-                    <>
-                      <p className="info info-update">
-                        {item.date.substring(0, 10)}
-                      </p>
-                      <p className="info info-update">{item.update}</p>
-                      <p className="info info-update">{item.nextsteps}</p>
-                    </>
-                  );
-                })}
+            <button type="submit">Save</button>
+            <div className="container">
+              {!project.updates
+                ? ""
+                : project.updates.sort(compare).map((item) => {
+                    return (
+                      <div className="card">
+                        <p className="small">{item.date.substring(0, 10)}</p>
+                        <p className="blue">
+                          <strong>Update:</strong>
+                        </p>
+                        <p className="small">{item.update}</p>
+                        <p className="blue">
+                          <strong>Next steps:</strong>
+                        </p>
+                        <p className="small">{item.nextsteps}</p>
+                      </div>
+                    );
+                  })}
+            </div>
           </div>
-          <button type="submit">Save</button>
         </div>
       </form>
     </div>

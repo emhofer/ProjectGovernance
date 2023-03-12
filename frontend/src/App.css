@@ -88,6 +88,10 @@ textarea, button {
   margin-bottom: 10px;
 }
 
+button {
+  display: block;
+}
+
 /* 
 
 .charter {
@@ -185,4 +189,12 @@ input::-webkit-scrollbar {
   background-color: #1d1d27;
   border-radius: 5px;
   padding: 3px 10px;
+}
+
+.small {
+  font-size: small;
+}
+
+.blue {
+  color: #5998C5;
 }
