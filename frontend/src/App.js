@@ -81,6 +81,11 @@ function App() {
           </tbody>
         </table> */}
         <div className="container">
+          <Link to="/project/new">
+            <div className="card center">
+              <strong>Add new project</strong>
+            </div>
+          </Link>
           {projects.map((item) => {
             return (
               <Link to={"/project/" + item.id}>

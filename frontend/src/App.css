@@ -147,10 +147,7 @@ button {
   grid-template-columns: repeat(6, 1fr);
 }
 
-.multiLine {
-  white-space: pre-wrap;
-  height: 20vh;
-}
+
 
 @media screen and (max-width: 600px) {
 
@@ -191,10 +188,18 @@ input::-webkit-scrollbar {
   padding: 3px 10px;
 }
 
+.multiline {
+  white-space: pre-wrap;
+}
+
 .small {
   font-size: small;
 }
 
 .blue {
   color: #5998C5;
+}
+
+.center {
+  text-align: center;
 }

@@ -194,11 +194,11 @@ function Project() {
                         <p className="blue">
                           <strong>Update:</strong>
                         </p>
-                        <p className="small">{item.update}</p>
+                        <p className="small multiline">{item.update}</p>
                         <p className="blue">
                           <strong>Next steps:</strong>
                         </p>
-                        <p className="small">{item.nextsteps}</p>
+                        <p className="small multiline">{item.nextsteps}</p>
                       </div>
                     );
                   })}
