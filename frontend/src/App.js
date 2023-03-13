@@ -110,6 +110,14 @@ function App() {
                       ? ""
                       : "- " + item.info.delayreason}
                   </p>
+                  <div className="btnContainer">
+                    <button
+                      className="deleteProject"
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </Link>
             );

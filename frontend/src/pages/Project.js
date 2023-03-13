@@ -183,7 +183,7 @@ function Project() {
               placeholder="What are the next steps to take?"
               className="info-update"
             ></textarea>{" "}
-            <button type="submit">Save</button>
+            <button className="btnSave" type="submit">Save</button>
             <div className="container">
               {!project.updates
                 ? ""

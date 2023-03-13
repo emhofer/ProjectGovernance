@@ -43,6 +43,11 @@ table a {
   text-decoration: none;
 }
 
+.btnContainer {
+  display: flex;
+  justify-content: right;
+}
+
 .deleteProject {
   background-color: transparent;
   border: none;
@@ -52,13 +57,13 @@ table a {
 }
 
 .deleteProject:hover {
-  background-color: #eaeaea;
-  color: #1d1d27;
+  /* background-color: #E01A4F; */
+  color: #E01A4F;
 }
 
 .deleteProject:active {
-  background-color: #5f5f7b;
-  color: #1d1d27;
+  /* background-color: #E01A4FA9; */
+  color: #E01A4FA9;
 }
 
 .heading {
@@ -100,7 +105,7 @@ button {
   margin-bottom: 10px;
 }
 
-button {
+.btnSave {
   display: block;
 }
 
@@ -214,4 +219,13 @@ input::-webkit-scrollbar {
 
 .center {
   text-align: center;
+}
+
+
+
+/*--------------------------*/
+@media screen and (min-width: 1500px) {
+  .page {
+    margin: 1rem 25% 1rem 25%;
+  }
 }
