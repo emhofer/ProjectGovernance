@@ -75,10 +75,22 @@ table a {
   padding: 5px;
   overflow: scroll;
   margin-bottom: 10px;
+  min-height: 3rem;
+}
+
+.noheight {
+  border: none;
+  background-color: #1d1d27;
+  color: #eaeaea;
+  border-radius: 5px;
+  padding: 5px;
+  overflow: scroll;
+  margin-bottom: 10px;
 }
 
 input,
-textarea, button {
+textarea,
+button {
   border: none;
   background-color: #1d1d27;
   color: #eaeaea;

@@ -127,7 +127,7 @@ function Project() {
             <select
               name="status"
               id="status"
-              className="info"
+              className="noheight"
               onChange={formatSelect}
               defaultValue={project.status}
             >
@@ -142,7 +142,7 @@ function Project() {
             <select
               name="delayreason"
               id="delayreason"
-              className="info"
+              className="noheight"
               defaultValue={project.delayreason}
             >
               <option value="-">-</option>
